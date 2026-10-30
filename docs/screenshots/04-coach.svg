@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 600" width="300" height="600" font-family="-apple-system, Segoe UI, Roboto, sans-serif">
+  <defs><clipPath id="s4"><rect width="300" height="600" rx="26"/></clipPath></defs>
+  <g clip-path="url(#s4)">
+    <rect width="300" height="600" fill="#F7F9FB"/>
+    <text x="20" y="24" font-size="11" font-weight="700" fill="#1F2933">9:41</text>
+    <text x="150" y="46" font-size="15" font-weight="700" fill="#057A55" text-anchor="middle">AI Coach</text>
+
+    <text x="150" y="92" font-size="34" text-anchor="middle">🍽️</text>
+    <text x="150" y="116" font-size="18" font-weight="800" fill="#1F2933" text-anchor="middle">AI Meal Coach</text>
+    <text x="150" y="134" font-size="11" fill="#6B7280" text-anchor="middle">Guidance from today's meals &amp; your goals</text>
+
+    <!-- headline card -->
+    <rect x="16" y="150" width="268" height="92" rx="16" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="32" y="178" font-size="15" font-weight="800" fill="#057A55">You're on a strong track! 💪</text>
+    <text x="32" y="202" font-size="12" fill="#1F2933">You've hit 1,110 of 2,000 kcal with great</text>
+    <text x="32" y="218" font-size="12" fill="#1F2933">protein. A light, veggie-forward dinner</text>
+    <text x="32" y="234" font-size="12" fill="#1F2933">will round out the day nicely.</text>
+
+    <text x="20" y="266" font-size="13" font-weight="700" fill="#1F2933">Tips for the rest of the day</text>
+    <rect x="16" y="276" width="268" height="118" rx="16" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="30" y="300" font-size="13" fill="#0E9F6E">•</text><text x="44" y="300" font-size="12" fill="#1F2933">Aim for ~50g more protein at dinner.</text>
+    <text x="30" y="326" font-size="13" fill="#0E9F6E">•</text><text x="44" y="326" font-size="12" fill="#1F2933">Add 2 cups of leafy greens for fiber.</text>
+    <text x="30" y="352" font-size="13" fill="#0E9F6E">•</text><text x="44" y="352" font-size="12" fill="#1F2933">You have ~890 kcal left — keep it light.</text>
+    <text x="30" y="378" font-size="13" fill="#0E9F6E">•</text><text x="44" y="378" font-size="12" fill="#1F2933">Hydrate: aim for 2 more glasses of water.</text>
+
+    <text x="20" y="418" font-size="13" font-weight="700" fill="#1F2933">What to eat next</text>
+    <rect x="16" y="428" width="268" height="92" rx="16" fill="#DEF7EC"/>
+    <text x="32" y="452" font-size="12" font-weight="600" fill="#057A55">Grilled salmon (150g) with quinoa and a</text>
+    <text x="32" y="470" font-size="12" font-weight="600" fill="#057A55">big spinach salad — roughly 520 kcal,</text>
+    <text x="32" y="488" font-size="12" font-weight="600" fill="#057A55">40g protein, 35g carbs, 22g fat. Hits your</text>
+    <text x="32" y="506" font-size="12" font-weight="600" fill="#057A55">protein goal and stays within budget.</text>
+
+    <rect x="92" y="540" width="116" height="38" rx="19" fill="#FFFFFF" stroke="#0E9F6E"/>
+    <text x="150" y="564" font-size="13" font-weight="700" fill="#057A55" text-anchor="middle">↻ Refresh advice</text>
+
+    <rect x="0.5" y="0.5" width="299" height="599" rx="26" fill="none" stroke="#E5E7EB"/>
+  </g>
+</svg>

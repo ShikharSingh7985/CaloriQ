@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 600" width="300" height="600" font-family="-apple-system, Segoe UI, Roboto, sans-serif">
+  <defs><clipPath id="s3"><rect width="300" height="600" rx="26"/></clipPath></defs>
+  <g clip-path="url(#s3)">
+    <rect width="300" height="600" fill="#F7F9FB"/>
+    <text x="20" y="24" font-size="11" font-weight="700" fill="#1F2933">9:41</text>
+    <text x="150" y="46" font-size="15" font-weight="700" fill="#057A55" text-anchor="middle">Snap a meal</text>
+
+    <!-- photo -->
+    <rect x="16" y="60" width="268" height="150" rx="18" fill="#DEF7EC"/>
+    <text x="150" y="130" font-size="40" text-anchor="middle">🍱</text>
+    <text x="150" y="160" font-size="12" font-weight="600" fill="#057A55" text-anchor="middle">meal photo</text>
+
+    <!-- result card -->
+    <rect x="16" y="224" width="268" height="338" rx="18" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="32" y="252" font-size="19" font-weight="800" fill="#1F2933">Chicken Rice Bowl</text>
+    <text x="32" y="286" font-size="28" font-weight="800" fill="#0E9F6E">620</text>
+    <text x="78" y="286" font-size="12" fill="#6B7280">kcal</text>
+    <rect x="190" y="266" width="80" height="26" rx="10" fill="#DEF7EC"/>
+    <text x="230" y="283" font-size="11" font-weight="700" fill="#057A55" text-anchor="middle">Health 8/10</text>
+
+    <!-- macros -->
+    <circle cx="78" cy="318" r="5" fill="#3F83F8"/><text x="78" y="344" font-size="16" font-weight="800" fill="#1F2933" text-anchor="middle">42g</text><text x="78" y="358" font-size="10" fill="#6B7280" text-anchor="middle">Protein</text>
+    <circle cx="150" cy="318" r="5" fill="#FF8A4C"/><text x="150" y="344" font-size="16" font-weight="800" fill="#1F2933" text-anchor="middle">65g</text><text x="150" y="358" font-size="10" fill="#6B7280" text-anchor="middle">Carbs</text>
+    <circle cx="222" cy="318" r="5" fill="#9061F9"/><text x="222" y="344" font-size="16" font-weight="800" fill="#1F2933" text-anchor="middle">18g</text><text x="222" y="358" font-size="10" fill="#6B7280" text-anchor="middle">Fat</text>
+
+    <text x="32" y="388" font-size="12" font-weight="700" fill="#1F2933">Detected items</text>
+    <text x="32" y="406" font-size="12" fill="#6B7280">Grilled chicken · White rice · Avocado · Corn</text>
+
+    <text x="32" y="434" font-size="12" font-weight="700" fill="#1F2933">Coach tip</text>
+    <text x="32" y="452" font-size="12" fill="#1F2933">Solid balanced meal. Add leafy greens for</text>
+    <text x="32" y="468" font-size="12" fill="#1F2933">extra fiber.</text>
+
+    <rect x="32" y="488" width="236" height="46" rx="12" fill="#0E9F6E"/>
+    <text x="150" y="516" font-size="14" font-weight="800" fill="#FFFFFF" text-anchor="middle">Save to log</text>
+    <text x="150" y="552" font-size="12" font-weight="600" fill="#6B7280" text-anchor="middle">Re-analyze</text>
+
+    <rect x="0.5" y="0.5" width="299" height="599" rx="26" fill="none" stroke="#E5E7EB"/>
+  </g>
+</svg>

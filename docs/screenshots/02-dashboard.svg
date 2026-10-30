@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 600" width="300" height="600" font-family="-apple-system, Segoe UI, Roboto, sans-serif">
+  <defs>
+    <clipPath id="screen"><rect x="0" y="0" width="300" height="600" rx="26"/></clipPath>
+  </defs>
+  <g clip-path="url(#screen)">
+    <rect width="300" height="600" fill="#F7F9FB"/>
+    <!-- status bar -->
+    <text x="20" y="24" font-size="11" font-weight="700" fill="#1F2933">9:41</text>
+    <circle cx="262" cy="20" r="3" fill="#6B7280"/><circle cx="272" cy="20" r="3" fill="#6B7280"/><circle cx="282" cy="20" r="3" fill="#1F2933"/>
+
+    <!-- header -->
+    <text x="20" y="58" font-size="20" font-weight="800" fill="#1F2933">Hi, Demo User 👋</text>
+    <text x="20" y="76" font-size="12" fill="#6B7280">Monday, June 22</text>
+    <circle cx="244" cy="52" r="18" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="244" y="57" font-size="15" text-anchor="middle">⚙</text>
+    <circle cx="282" cy="52" r="18" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="282" y="58" font-size="15" text-anchor="middle">⎋</text>
+
+    <!-- summary card -->
+    <rect x="16" y="92" width="268" height="206" rx="18" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="32" y="116" font-size="12" font-weight="700" fill="#6B7280">Calories today</text>
+    <text x="32" y="148" font-size="30" font-weight="800" fill="#0E9F6E">1,110</text>
+    <text x="118" y="148" font-size="13" fill="#6B7280">/ 2000 kcal</text>
+    <rect x="32" y="158" width="236" height="11" rx="5.5" fill="#E5E7EB"/>
+    <rect x="32" y="158" width="130" height="11" rx="5.5" fill="#0E9F6E"/>
+    <text x="32" y="186" font-size="11" fill="#6B7280">890 kcal remaining</text>
+    <line x1="32" y1="200" x2="268" y2="200" stroke="#E5E7EB"/>
+    <!-- macros -->
+    <text x="32" y="222" font-size="12" font-weight="700" fill="#1F2933">Protein</text>
+    <text x="268" y="222" font-size="12" font-weight="700" fill="#1F2933" text-anchor="end">67g / 120g</text>
+    <rect x="32" y="228" width="236" height="8" rx="4" fill="#E5E7EB"/><rect x="32" y="228" width="131" height="8" rx="4" fill="#3F83F8"/>
+    <text x="32" y="256" font-size="12" font-weight="700" fill="#1F2933">Carbs</text>
+    <text x="268" y="256" font-size="12" font-weight="700" fill="#1F2933" text-anchor="end">122g / 220g</text>
+    <rect x="32" y="262" width="236" height="8" rx="4" fill="#E5E7EB"/><rect x="32" y="262" width="131" height="8" rx="4" fill="#FF8A4C"/>
+    <text x="32" y="290" font-size="12" font-weight="700" fill="#1F2933">Fat</text>
+    <text x="268" y="290" font-size="12" font-weight="700" fill="#1F2933" text-anchor="end">34g / 70g</text>
+    <rect x="32" y="296" width="236" height="0" /> <!-- spacer -->
+
+    <!-- coach button -->
+    <rect x="16" y="314" width="268" height="50" rx="16" fill="#057A55"/>
+    <text x="32" y="344" font-size="15" font-weight="800" fill="#FFFFFF">🍽️  Ask the AI coach</text>
+    <text x="268" y="346" font-size="20" font-weight="800" fill="#FFFFFF" text-anchor="end">›</text>
+
+    <text x="20" y="392" font-size="16" font-weight="700" fill="#1F2933">Today's meals</text>
+
+    <!-- meal card 1 -->
+    <rect x="16" y="404" width="268" height="68" rx="16" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <rect x="28" y="416" width="44" height="44" rx="12" fill="#DEF7EC"/>
+    <text x="50" y="445" font-size="20" text-anchor="middle">🥗</text>
+    <text x="82" y="432" font-size="14" font-weight="700" fill="#1F2933">Chicken Rice Bowl</text>
+    <text x="82" y="448" font-size="11" fill="#6B7280">lunch · 1:24 PM</text>
+    <text x="82" y="462" font-size="11" fill="#6B7280">P 42g · C 65g · F 18g</text>
+    <text x="272" y="432" font-size="17" font-weight="800" fill="#0E9F6E" text-anchor="end">620</text>
+    <text x="272" y="445" font-size="9" fill="#6B7280" text-anchor="end">kcal</text>
+    <rect x="238" y="450" width="34" height="15" rx="7" fill="#DEF7EC"/>
+    <text x="255" y="461" font-size="9" font-weight="700" fill="#057A55" text-anchor="middle">8/10</text>
+
+    <!-- meal card 2 -->
+    <rect x="16" y="482" width="268" height="68" rx="16" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <rect x="28" y="494" width="44" height="44" rx="12" fill="#DEF7EC"/>
+    <text x="50" y="523" font-size="20" text-anchor="middle">🍳</text>
+    <text x="82" y="510" font-size="14" font-weight="700" fill="#1F2933">Greek Yogurt &amp; Berries</text>
+    <text x="82" y="526" font-size="11" fill="#6B7280">breakfast · 7:30 AM</text>
+    <text x="82" y="540" font-size="11" fill="#6B7280">P 18g · C 32g · F 8g</text>
+    <text x="272" y="510" font-size="17" font-weight="800" fill="#0E9F6E" text-anchor="end">280</text>
+    <text x="272" y="523" font-size="9" fill="#6B7280" text-anchor="end">kcal</text>
+    <rect x="238" y="528" width="34" height="15" rx="7" fill="#DEF7EC"/>
+    <text x="255" y="539" font-size="9" font-weight="700" fill="#057A55" text-anchor="middle">9/10</text>
+
+    <!-- FAB -->
+    <rect x="92" y="560" width="116" height="40" rx="20" fill="#0E9F6E"/>
+    <text x="150" y="585" font-size="14" font-weight="800" fill="#FFFFFF" text-anchor="middle">＋ Snap a meal</text>
+
+    <rect x="0.5" y="0.5" width="299" height="599" rx="26" fill="none" stroke="#E5E7EB"/>
+  </g>
+</svg>
