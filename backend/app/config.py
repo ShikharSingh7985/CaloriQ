@@ -22,8 +22,8 @@ class Settings:
         "DATABASE_URL", f"sqlite:///{BASE_DIR / 'nutrisnap.db'}"
     )
 
-    ANTHROPIC_API_KEY: str | None = os.environ.get("ANTHROPIC_API_KEY")
-    CLAUDE_MODEL: str = os.environ.get("CLAUDE_MODEL", "claude-opus-4-8")
+    GEMINI_API_KEY: str | None = os.environ.get("GEMINI_API_KEY")
+    GEMINI_MODEL: str = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
 
     UPLOAD_DIR: Path = BASE_DIR / "uploads"
 

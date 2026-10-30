@@ -1,7 +1,7 @@
 export type MealType = "breakfast" | "lunch" | "dinner" | "snack";
 export type NutritionGoal = "lose" | "maintain" | "gain";
 
-// Shape returned by the /meals/analyze endpoint (Claude's structured output).
+// Shape returned by the /meals/analyze endpoint (Gemini's structured output).
 export type MealAnalysis = {
   name: string;
   meal_type: MealType;

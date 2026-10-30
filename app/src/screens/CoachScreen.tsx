@@ -56,7 +56,7 @@ export function CoachScreen(_props: ScreenProps<"Coach">) {
           <View style={styles.errorCard}>
             <Text style={styles.errorText}>{error}</Text>
             <Text style={styles.errorHint}>
-              Make sure ANTHROPIC_API_KEY is set on the backend.
+              Make sure GEMINI_API_KEY is set on the backend.
             </Text>
           </View>
         )}

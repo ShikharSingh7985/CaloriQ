@@ -35,7 +35,7 @@ if (-not (Test-Path $py)) {
 # 2) Install dependencies if they're missing (fresh or partial venv).
 $needInstall = $true
 try {
-  & $py -c 'import uvicorn, fastapi, anthropic' 2>$null
+  & $py -c 'import uvicorn, fastapi, google.genai' 2>$null
   if ($LASTEXITCODE -eq 0) { $needInstall = $false }
 } catch { $needInstall = $true }
 
@@ -45,11 +45,11 @@ if ($needInstall) {
   & $py -m pip install --quiet -r requirements.txt
 }
 
-# 3) Ensure an .env exists (the API needs ANTHROPIC_API_KEY for AI features).
+# 3) Ensure an .env exists (the API needs GEMINI_API_KEY for AI features).
 if (-not (Test-Path '.env')) {
   Write-Host '!  backend\.env not found - creating it from .env.example'
   Copy-Item '.env.example' '.env'
-  Write-Host '   Edit backend\.env and set ANTHROPIC_API_KEY before using the AI endpoints.'
+  Write-Host '   Edit backend\.env and set GEMINI_API_KEY before using the AI endpoints.'
 }
 
 # 4) Start the server.

@@ -1,12 +1,14 @@
-"""Claude-powered nutrition analysis of a meal photo."""
+"""Gemini-powered nutrition analysis and meal coaching."""
+import base64
 import json
 
-from anthropic import Anthropic
 from fastapi import HTTPException
+from google import genai
+from google.genai import types
 
 from .config import settings
 
-# JSON Schema that constrains Claude's output so the API can rely on its shape.
+# JSON Schema that constrains Gemini's output so the API can rely on its shape.
 NUTRITION_SCHEMA = {
     "type": "object",
     "additionalProperties": False,
@@ -66,48 +68,33 @@ def analyze_meal_image(
     media_type: str = "image/jpeg",
     meal_type_hint: str | None = None,
 ) -> dict:
-    if not settings.ANTHROPIC_API_KEY:
+    if not settings.GEMINI_API_KEY:
         raise HTTPException(
-            status_code=500, detail="Server is missing ANTHROPIC_API_KEY"
+            status_code=500, detail="Server is missing GEMINI_API_KEY"
         )
 
-    client = Anthropic(api_key=settings.ANTHROPIC_API_KEY)
+    client = genai.Client(api_key=settings.GEMINI_API_KEY)
     hint = f"The user says this is likely a {meal_type_hint}." if meal_type_hint else ""
 
     try:
-        message = client.messages.create(
-            model=settings.CLAUDE_MODEL,
-            max_tokens=1024,
-            output_config={
-                "format": {"type": "json_schema", "schema": NUTRITION_SCHEMA},
-                "effort": "medium",
-            },
-            system=SYSTEM_PROMPT,
-            messages=[
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "image",
-                            "source": {
-                                "type": "base64",
-                                "media_type": media_type,
-                                "data": image_base64,
-                            },
-                        },
-                        {
-                            "type": "text",
-                            "text": f"Identify this meal and estimate its nutrition. {hint}".strip(),
-                        },
-                    ],
-                }
+        response = client.models.generate_content(
+            model=settings.GEMINI_MODEL,
+            contents=[
+                types.Part.from_bytes(
+                    data=base64.b64decode(image_base64), mime_type=media_type
+                ),
+                f"Identify this meal and estimate its nutrition. {hint}".strip(),
             ],
+            config=types.GenerateContentConfig(
+                system_instruction=SYSTEM_PROMPT,
+                response_mime_type="application/json",
+                response_json_schema=NUTRITION_SCHEMA,
+            ),
         )
     except Exception as err:  # noqa: BLE001 - surface a clean error to the client
         raise HTTPException(status_code=502, detail=f"Nutrition analysis failed: {err}")
 
-    # With output_config.format the first text block is guaranteed-valid JSON.
-    text = next((b.text for b in message.content if b.type == "text"), None)
+    text = response.text
     if not text:
         raise HTTPException(status_code=502, detail="Model returned no analysis")
     return json.loads(text)
@@ -151,12 +138,12 @@ COACH_SYSTEM = (
 
 def coach_recommendation(context: dict) -> dict:
     """Generate a coaching recommendation from the day's nutrition context."""
-    if not settings.ANTHROPIC_API_KEY:
+    if not settings.GEMINI_API_KEY:
         raise HTTPException(
-            status_code=500, detail="Server is missing ANTHROPIC_API_KEY"
+            status_code=500, detail="Server is missing GEMINI_API_KEY"
         )
 
-    client = Anthropic(api_key=settings.ANTHROPIC_API_KEY)
+    client = genai.Client(api_key=settings.GEMINI_API_KEY)
 
     eaten = context.get("meals") or []
     meals_line = (
@@ -178,20 +165,19 @@ def coach_recommendation(context: dict) -> dict:
     )
 
     try:
-        message = client.messages.create(
-            model=settings.CLAUDE_MODEL,
-            max_tokens=1024,
-            output_config={
-                "format": {"type": "json_schema", "schema": COACH_SCHEMA},
-                "effort": "medium",
-            },
-            system=COACH_SYSTEM,
-            messages=[{"role": "user", "content": prompt}],
+        response = client.models.generate_content(
+            model=settings.GEMINI_MODEL,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                system_instruction=COACH_SYSTEM,
+                response_mime_type="application/json",
+                response_json_schema=COACH_SCHEMA,
+            ),
         )
     except Exception as err:  # noqa: BLE001
         raise HTTPException(status_code=502, detail=f"Coach request failed: {err}")
 
-    text = next((b.text for b in message.content if b.type == "text"), None)
+    text = response.text
     if not text:
         raise HTTPException(status_code=502, detail="Model returned no coaching")
     return json.loads(text)

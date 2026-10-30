@@ -33,7 +33,7 @@ export function AddMealScreen({ navigation }: ScreenProps<"AddMeal">) {
     const asset = result.assets[0];
     setImageUri(asset.uri);
     setImageBase64(asset.base64 ?? null);
-    // Normalize to a media type Claude + Storage accept; default to JPEG.
+    // Normalize to a media type Gemini + Storage accept; default to JPEG.
     const mt = asset.mimeType ?? "image/jpeg";
     setMediaType(["image/jpeg", "image/png", "image/webp"].includes(mt) ? mt : "image/jpeg");
     setAnalysis(null);

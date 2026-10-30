@@ -4,7 +4,7 @@ A React Native nutrition tracker with photo-based meal analysis and a personaliz
 
 ## Overview
 
-CaloriQ brings meal logging, daily calorie and macronutrient totals, and nutrition goals into one mobile interface. The Expo client communicates with a FastAPI backend, which stores accounts and meals and calls Anthropic for photo analysis and coaching. AI nutrition values are estimates.
+CaloriQ brings meal logging, daily calorie and macronutrient totals, and nutrition goals into one mobile interface. The Expo client communicates with a FastAPI backend, which stores accounts and meals and calls the Gemini API for photo analysis and coaching. AI nutrition values are estimates.
 
 This portfolio adaptation rebrands the existing NutriSnap foundation; its application logic and architecture are preserved.
 
@@ -32,7 +32,7 @@ Versions below reflect repository declarations, not a verified device build.
 | API | Python, FastAPI, Uvicorn, Pydantic, email-validator, python-dotenv |
 | Storage | SQLAlchemy 2, SQLite by default; PostgreSQL 16 and psycopg 3 in Compose; local photo files |
 | Authentication | PyJWT, bcrypt, HTTP bearer authentication |
-| AI | Anthropic Python SDK, Claude vision and JSON-schema outputs |
+| AI | Google Gen AI Python SDK, Gemini image understanding and JSON-schema outputs |
 | Containers | Docker, Docker Compose; Python 3.12 slim backend image |
 
 ## Architecture and structure
@@ -55,7 +55,7 @@ CaloriQ/
 |   |-- app/
 |   |   |-- main.py           API setup, CORS, uploads, router registration
 |   |   |-- routers/          Auth, profile, meals, coaching routes
-|   |   |-- ai.py             Anthropic requests and output schemas
+|   |   |-- ai.py             Gemini requests and output schemas
 |   |   |-- auth.py           Password hashing and JWT verification
 |   |   |-- config.py         Environment settings
 |   |   |-- database.py       Engine and sessions
@@ -79,7 +79,7 @@ The client sends JSON over REST with a bearer token. Photo analysis accepts base
 - Python 3.11+ and pip (the container uses Python 3.12).
 - Expo Go compatible with this SDK, or an appropriate development build.
 - Android emulator/Android Studio or a physical Android device. An iOS simulator requires macOS and Xcode; a physical iPhone can connect to Expo Go from a Windows-hosted server.
-- Anthropic credentials and access to a model supporting the request format in `backend/app/ai.py` for AI features.
+- A Gemini API key from Google AI Studio and access to the configured model for AI features.
 - Optional: Docker with Docker Compose for PostgreSQL setup.
 
 ## Local installation
@@ -99,15 +99,15 @@ Copy-Item .env.example .env
 Edit `backend/.env` with your local values; the following are placeholders only:
 
 ```dotenv
-ANTHROPIC_API_KEY=<your-anthropic-api-key>
+GEMINI_API_KEY=<your-gemini-api-key>
 SECRET_KEY=<your-long-random-signing-secret>
 # Optional overrides:
 # DATABASE_URL=sqlite:///./<database-filename>.db
 # ACCESS_TOKEN_EXPIRE_MINUTES=<token-lifetime-in-minutes>
-# CLAUDE_MODEL=<supported-claude-model-id>
+# GEMINI_MODEL=<supported-gemini-model-id>
 ```
 
-If omitted, the existing database default is `backend/nutrisnap.db`; it is intentionally retained for data continuity. The existing model default is `claude-opus-4-8`; availability and API compatibility must be verified with your account. Authentication, sample meals, and ordinary meal storage do not require AI calls.
+If omitted, the existing database default is `backend/nutrisnap.db`; it is intentionally retained for data continuity. The Gemini model defaults to `gemini-3.8-flash`; confirm that your API key can access it. Authentication, sample meals, and ordinary meal storage do not require AI calls.
 
 ```powershell
 python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
@@ -167,17 +167,17 @@ All auth/profile/meal payloads use JSON. Protected routes require `Authorization
 | GET | `/auth/me` | Read authenticated user |
 | GET / PUT | `/profile` | Read/update name and daily targets |
 | GET | `/meals` | List meals, optionally filtered by `since` |
-| POST | `/meals/analyze` | Analyze a base64 photo through Anthropic |
+| POST | `/meals/analyze` | Analyze a base64 photo through Gemini |
 | POST | `/meals` | Log nutrition and optional image |
 | DELETE | `/meals/{meal_id}` | Delete an owned meal |
 | POST | `/meals/demo-seed` | Add sample meals to the authenticated account |
-| GET | `/coach` | Generate daily coaching through Anthropic |
+| GET | `/coach` | Generate daily coaching through Gemini |
 
 Uploaded photos are served at `/uploads/...`. See the running API's `/docs` for exact schemas.
 
 ## Validation and current limits
 
-No automated test suite, lint script, or CI configuration is included. With client dependencies installed, run `npx --no-install tsc --noEmit` from `app/` for TypeScript checking. Device builds, camera permissions, network access, and live AI requests require separate environment validation. This repository does not claim production readiness.
+The backend includes Gemini integration tests that mock network requests. Run `python -m unittest discover -s tests -v` from `backend/` after installing its requirements. No lint script or CI configuration is included. With client dependencies installed, run `npx --no-install tsc --noEmit` from `app/` for TypeScript checking. Device builds, camera permissions, network access, and live AI requests require separate environment validation. This repository does not claim production readiness.
 
 ## Future improvements
 

@@ -30,7 +30,7 @@ export function getTodaysMeals(): Promise<Meal[]> {
   return api<Meal[]>(`/meals?since=${encodeURIComponent(start.toISOString())}`);
 }
 
-/** Ask the backend (Claude) to analyze a base64 meal photo. */
+/** Ask the backend (Gemini) to analyze a base64 meal photo. */
 export async function analyzeMeal(params: {
   imageBase64: string;
   mediaType?: string;
