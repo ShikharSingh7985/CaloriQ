@@ -1,0 +1,41 @@
+# Run the CaloriQ backend with Postgres in one command:
+#   1. cp backend/.env.example backend/.env   (set ANTHROPIC_API_KEY + SECRET_KEY)
+#   2. docker compose up --build
+# The API is then on http://localhost:8000 (and http://<your-LAN-IP>:8000 for a phone).
+#
+# This uses Postgres; to run the backend on SQLite instead, just run uvicorn
+# directly (see README.MD) — no compose needed.
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: nutrisnap
+      POSTGRES_PASSWORD: nutrisnap
+      POSTGRES_DB: nutrisnap
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nutrisnap"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - ./backend/.env
+    environment:
+      # Overrides the SQLite default; points the API at the Postgres service.
+      DATABASE_URL: postgresql+psycopg://nutrisnap:nutrisnap@db:5432/nutrisnap
+    ports:
+      - "8000:8000"
+    volumes:
+      - uploads:/app/uploads
+
+volumes:
+  pgdata:
+  uploads:
