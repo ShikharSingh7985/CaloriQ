@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "CaloriQ",
+    "slug": "caloriq",
+    "scheme": "nutrisnap",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#0E9F6E"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nutrisnap.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "CaloriQ uses the camera to capture meal photos for nutrition analysis.",
+        "NSPhotoLibraryUsageDescription": "CaloriQ accesses your photos so you can analyze meals from your library."
+      }
+    },
+    "android": {
+      "package": "com.nutrisnap.app"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "CaloriQ accesses your photos so you can analyze meals from your library.",
+          "cameraPermission": "CaloriQ uses the camera to capture meal photos for nutrition analysis."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0E9F6E",
+          "resizeMode": "contain"
+        }
+      ]
+    ],
+    "extra": {}
+  }
+}
